@@ -23,6 +23,8 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(4000, () => {
-  console.log("server is running!");
+const port = 4000;
+
+server.listen(port, () => {
+  console.log(`server is running on ${port}!`);
 });
