@@ -18,8 +18,14 @@ const io = new Server(server, {
 io.on("connection", (socket) => {
   console.log(`User Connected : ${socket.id}`);
 
+  socket.on("join_room", (data) => {
+    console.log("join room server start");
+    socket.join(data);
+  });
+
   socket.on("send_message", (data) => {
-    socket.broadcast.emit("receive_message", data);
+    console.log(data);
+    socket.to(data.room).emit("receive_message", data);
   });
 });
 
